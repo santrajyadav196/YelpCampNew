@@ -65,13 +65,12 @@ app.use(mongoSanitize());
 const secret = process.env.SECRET || 'this should be a better secret';
 
 const store = MongoStore.create({
-    Url: dbUrl,
+    mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
         secret,
     }
 });
-
 
 store.on("error", function (e) {
     console.log("SESSION STORE ERROR", e)
